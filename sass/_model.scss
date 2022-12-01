@@ -1,0 +1,115 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.3s ease-in-out;
+    background-color: $white;
+    z-index: 50;
+    border-radius: 10px;
+    width: 45rem;
+    height: 50rem;
+    max-width: 80%;
+    padding: 2rem 2rem;
+    color: $grayish-blue;
+  
+    &.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  
+    &__header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    &__title {
+      font-size: 3rem;
+      border-bottom: 5px solid $lime-green;
+    }
+  
+    &__btn {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
+      font-size: 5rem;
+    }
+  
+    &__body {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 2rem;
+    }
+  
+    #username,
+    #password,
+    #checkbox-label,
+    a {
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+  
+    a {
+      text-align: right;
+      text-decoration: none;
+      color: $dark-blue;
+    }
+  
+    .input-username:focus,
+    .input-password:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      transition: all 0.2s;
+    }
+  
+    #checkbox-label,
+    .login {
+      cursor: pointer;
+    }
+  
+    .input-username,
+    .input-password,
+    .login {
+      padding: 1rem 1.5rem;
+      outline: none;
+      border-radius: 10rem;
+      //box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      transition: all 0.2s;
+      border: 1px solid $dark-blue;
+    }
+  
+    .login {
+      background-color: $bright-cyan;
+      color: $white;
+      font-weight: 800;
+      font-size: 1.5rem;
+      font-family: "Public Sans", sans-serif;
+      border: none;
+      transition: all 0.4s;
+  
+      &:hover {
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      }
+    }
+  }
+  
+  .overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba($color-black, 0.6);
+    z-index: 49;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .active {
+    pointer-events: all;
+    opacity: 1;
+  }
+  

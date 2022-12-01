@@ -1,0 +1,232 @@
+@import "./variables";
+@import "./mixins";
+
+.navigation {
+  padding-top: 1.5rem;
+  height: 8rem;
+  padding-bottom: 9rem;
+  position: relative;
+  z-index: 5;
+  background-color: $white;
+
+  & .row {
+    height: 8rem;
+
+    @include respond(tab-port) {
+      position: relative;
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  [class^="col-"] {
+    &:not(:last-child) {
+      @include respond(tab-land) {
+        margin-right: 0;
+      }
+    }
+
+    .logo-box {
+      padding: 3rem;
+      text-align: center;
+
+      @include respond(tab-port) {
+        padding: 2rem;
+      }
+
+      @include respond(tab-land) {
+        padding: 2.5rem;
+      }
+
+      /* .logo {
+        @include respond(tab-port) {
+          width: 95%;
+        } */
+    }
+  }
+
+  .col-3-of-4 {
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.9rem 0;
+    text-transform: uppercase;
+    font-size: 80%;
+
+    @include respond(tab-port) {
+      height: 85vh;
+      display: grid;
+      grid-template-columns: auto;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      position: absolute;
+      top: 8rem;
+      text-align: center;
+      left: -100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+      background-color: $light-grayish-blue;
+    }
+
+    @include respond(tab-land) {
+      padding: 0;
+    }
+    &.active {
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+
+    &__item {
+      display: inline;
+      list-style: none;
+      padding: 1rem 0;
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+
+        &:first-child {
+          @include respond(tab-port) {
+            padding-top: 3rem;
+          }
+        }
+
+        @include respond(mid-desk) {
+          margin-right: 1.5rem;
+          //padding: 2.5rem 0;
+        }
+
+        @include respond(tab-land) {
+          margin-right: 0.5rem;
+          padding: 2.5rem 0;
+        }
+
+        @include respond(phone) {
+          margin-right: 0;
+          padding: 2.5rem 0;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:hover .nav__link::after {
+        width: 100%;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      color: $dark-blue;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 4px;
+        width: 0;
+        background-image: linear-gradient(to right, $lime-green, $bright-cyan);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        top: 5.7rem;
+        transition: width 0.3s;
+
+        @include respond(tab-port) {
+          top: 4rem;
+        }
+      }
+
+      @include respond(tab-port) {
+        width: 100%;
+        line-height: 1rem;
+        display: table;
+        font-size: 2rem;
+      }
+    }
+
+    &__btn-container {
+      padding: 0;
+
+      @include respond(tab-port) {
+        padding: 2rem;
+      }
+    }
+
+    &__btn {
+      position: relative;
+      display: inline-block;
+      font-size: 90%;
+      text-decoration: none;
+      background-image: linear-gradient(to right, $lime-green, $bright-cyan);
+      color: $white;
+      border: none;
+      padding: 1.5rem 3.5rem;
+      border-radius: 10rem;
+      transition: all 0.2s;
+
+      @include respond(tab-land) {
+        text-align: center;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+      }
+
+      @include respond(mid-desk) {
+        padding: 1.5rem 3rem;
+        font-size: 85%;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .mobile-menu {
+    &.active {
+      transition: all 0.5s ease;
+
+      @include respond(tab-port) {
+        & > .bar:nth-child(2) {
+          opacity: 0;
+        }
+        & > .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+        & > .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+    .bar {
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      transition: all 0.3s ease-in-out;
+      background-color: $dark-blue;
+      z-index: 5;
+
+      @include respond(tab-port) {
+        display: block;
+      }
+    }
+
+    @include respond(tab-port) {
+      position: absolute;
+      top: 20%;
+      right: 7%;
+      cursor: pointer;
+    }
+  }
+}
